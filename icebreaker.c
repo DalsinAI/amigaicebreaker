@@ -73,14 +73,26 @@ int setup(void)
 	struct passwd * userinfo;
 	int newuser=false;
 	
+#ifdef __amigaos__
+	srandom(time(NULL));
+#else
 	srandom(time(NULL)+getpid());	
+#endif
 	
 	//stupid buffers
 	setvbuf(stdout,(char *)NULL, _IOLBF, 0);
 	
+#ifdef __amigaos__
+	/* no users: the name from $USER if set, the files in the drawer
+	   (amiga/amiga_paths.c folds the "PROGDIR:/" the joined names get) */
+	snprintf(username,50,"%s",getenv("USER") ? getenv("USER") : "Penguin");
+	snprintf(homedir,255,"PROGDIR:");
+	(void)userinfo;
+#else
 	userinfo = getpwuid(getuid()); // FIX -- make this part of the options struct; and maybe save in options file
 	snprintf(username,50,"%s",userinfo->pw_name); // not like it's gonna be fifty characters. but y'know. note: gets chopped to fit in gethighusername().
 	snprintf(homedir,255,"%s",userinfo->pw_dir); // fix - use OS define for length
+#endif
 
 	inithiscores();
 	newuser=readoptions();		
