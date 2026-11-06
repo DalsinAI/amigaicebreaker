@@ -47,7 +47,7 @@ static int sysret;
 //***************** LOCK_DEBUG MACRO *********************************
 //#include "stdio.h"
 //#define LOCK_DEBUG(a...) fprintf(stderr,a)
-#define LOCK_DEBUG(a...)
+#define LOCK_DEBUG(...)
 
 //***************** SYSCALL WRAPPING *********************************
 #ifdef WIN32
