@@ -3,6 +3,6 @@ Name=IceBreaker
 Type=Application
 Comment=addictive action-puzzle game involving bouncing penguins
 Exec=icebreaker
-Icon=/usr/share/icebreaker/icebreaker_128.png
+Icon=/usr/share/icons/hicolor/128x128/apps/icebreaker_128.png
 Terminal=false
 Keywords=puzzle;game;penguins;ice;

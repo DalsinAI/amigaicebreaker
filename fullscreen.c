@@ -71,7 +71,7 @@ int makefullscreen()
 	screen = NULL;
 	
 	// very clever idea from Enrico
-	screen = SDL_CreateRGBSurfaceFrom(fullscreen->pixels +
+	screen = SDL_CreateRGBSurfaceFrom((u_char*) fullscreen->pixels +
 	                fullscreen->format->BytesPerPixel * FULLLEFTMARGIN +
 	                FULLTOPMARGIN*fullscreen->format->BytesPerPixel *  FULLWIDTH,
 	                WIDTH, HEIGHT, VIDEODEPTH,

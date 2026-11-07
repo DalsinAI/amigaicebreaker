@@ -47,7 +47,7 @@ static int sysret;
 //***************** LOCK_DEBUG MACRO *********************************
 //#include "stdio.h"
 //#define LOCK_DEBUG(a...) fprintf(stderr,a)
-#define LOCK_DEBUG(a...)
+#define LOCK_DEBUG(...)
 
 //***************** SYSCALL WRAPPING *********************************
 #ifdef WIN32
@@ -59,6 +59,18 @@ static int sysret;
 # define CLOSE_SYSCALL(a)	CloseHandle(a)
 # define SLEEP_SYSCALL()	Sleep(DELAY)
 # define BAD_VALUE 		0
+# define IS_OK(a)		(a != BAD_VALUE)
+
+#elif defined(__amigaos__)
+
+/* one user: the lock is the file itself, made if it is not there */
+# define DELAY          	INTERVAL
+# define LOCK_SYSCALL(a)   	{sysret=0;}
+# define UNLOCK_SYSCALL(a)      {sysret=0;}
+# define OPEN_SYSCALL(a)	open(a,O_RDWR|O_CREAT,0644)
+# define CLOSE_SYSCALL(a)	close(a)
+# define SLEEP_SYSCALL()	sleep(DELAY)
+# define BAD_VALUE 		-1
 # define IS_OK(a)		(a != BAD_VALUE)
 
 #else

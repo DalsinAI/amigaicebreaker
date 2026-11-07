@@ -87,6 +87,21 @@
 #endif
 
 
+#ifdef __amigaos__
+
+  /* the settings and high scores beside the program, the data in its
+     data/ (amiga/Makefile.amigaos gives DATAPREFIX) */
+  #define OPTIONFILE "icebreaker.cfg"
+  #define HISCOREFILE "icebreaker.scores"
+  #define HISCORELOCKFILE "icebreaker.lck"
+
+  /* libnix has rand() but no random() */
+  #include <stdlib.h>
+  #define random() rand()
+  #define srandom(s) srand(s)
+#endif
+
+
 /************************************************************************/
 /* and here's the defaults */
 
