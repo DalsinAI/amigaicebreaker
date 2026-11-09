@@ -82,4 +82,4 @@ freely-licensed sources, the penguin drawn after Pingus's). libmikmod: LGPL
 2 or later (COPYING-libmikmod.txt). The Amiga files (amiga/): the AmiCradle
 Team, GPL 2 or later, except the mixer, which comes from the Team's Wizznic
 port and is GPL 3 or later, so the program as built here is GPL 3 or
-later; the icon is upstream's icebreaker_128.png, made smaller.
+later; the icons are our own GlowIcons (amiga/icons/art/icebreaker.svg).
